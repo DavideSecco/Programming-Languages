@@ -1,0 +1,41 @@
+5. Statements 
+print on the "console" (note the "." between two expression):
+Transcript clear.					"Note the period separating this statement from the next."
+Transcript show: 'Hello world!'		"Transcript is a word know to the environment and represents essentially the text-display object in the Launcher."
+
+6. Shortcut: A sequence of messages to the same receiver can be cascaded
+If a sequence of consecutive statements has the same receiver, you can use cascading instead of retyping the receiver. As an example,
+
+Transcript clear.					"Note that this and the following statements have the same receiver Transcript."
+Transcript show: 'Hello world!'.
+Transcript cr.
+Transcript show: 'How are you?'
+
+has the same effect as the 'cascaded' form
+
+Transcript 	clear;						"Note the semicolon separating the 'cascaded' messages instead of a period separating statements."
+			show: 'Hello world!';		"Receiver is not repeated."
+			cr;
+			show: 'How are you?'
+
+The semicolon that ends each cascaded expression indicates that the next message is sent to the same receiver as the current message.
+
+7. Variables
+
+After evaluating a message, Smalltalk automatically discards the returned object unless you assign it to a variable, or unless the object is referenced by another object that still exists. (This automatic removal of unneeded objects is called automatic garbage collection.) So if you need to keep the result of an expression later, assign it to a variable. All variables in Smalltalk must be 'declared' before the first statement and the declaration lists the names of all required variables but does not specify their type. Here is an example:
+
+| price tax total |																	"Declaration: Variable names separated by spaces."
+price := (Dialog request: 'Please enter price' initialAnswer: '100') asNumber.
+tax := (Dialog request: 'Please enter price %'  initialAnswer: '10') asNumber.
+total := price + (price * tax / 100).
+Transcript clear;
+	show: 'price: ', price printString; cr;
+	show: 'tax: ', tax printString; cr;
+	show: 'total: ', total printString
+
+The reason why Smalltalk variables (unlike variables in most other languages) don't require type declaration is that they are just pointers to objects, essentially addresses of memory locations holding the representation of the object to which they are 'bound'. As a consequence, a variable can point to one object in one part of a fragment and another in another part of the same fragment. Doing this is, however, considered poor programming style.
+
+
+The variables introduced in this code fragment are called temporary variables and their scope (range in which they can be used by the program) and lifetime are limited to the code fragment: When the code fragment is fully evaluated, they cease to exist and the objects that they point to are discarded - unless they are referenced by other objects. I will introduce other types of variables later.
+
+Symbol := is the assignment operator and it binds the result of the right hand side of the assignment statement to the variable on the left hand side. If you are in a hurry (or lazy), you can get := by pressing <Ctrl> and letter g. (Presumably because assignment stands for 'variable gets value'.) By the way, the assignment operator is not a message but a part of Smalltalk's definition.

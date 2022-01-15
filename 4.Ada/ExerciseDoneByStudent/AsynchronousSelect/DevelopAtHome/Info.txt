@@ -1,0 +1,5 @@
+Daciukowi nie spodobało się to w jaki sposób czyścimy nasz magazyn z rzeczami. 
+Dodatkowo był jeden błąd w kodzie, jakaś pętla miała zły zapis, ale to łatwo wyczić i zmienić. 
+
+A Daciuk non piaceva il modo in cui puliamo il nostro magazzino con le cose.
+Inoltre, c'era un errore nel codice, alcuni loop non sono stati scritti correttamente, ma è facile da rilevare e modificare.

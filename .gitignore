@@ -1,0 +1,17 @@
+# Directories:
+.vscode
+obj/
+
+# Files:
+desktop.ini
+*.gpr
+*.ali
+*.o
+*.bexch
+*.ini
+*.mp4
+
+# Exception:
+!Homework/.vscode/
+!Homework/default.gpr
+

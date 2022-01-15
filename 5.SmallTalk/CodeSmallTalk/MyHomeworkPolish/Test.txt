@@ -1,0 +1,17 @@
+r := (Romb new) initialize: 4.
+r drukuj.
+k := (Kwadrat new) initialize: 2.
+k drukuj.
+Transcript show: 'r+r'; cr.
+r1 := r przesun: 2@3.
+r1 drukuj.
+r2 := r1 + r1 + r1 + r1.
+r2 drukuj.
+Transcript show: 'r+k'; cr.
+k1 := k przesun: (1 negated)@(1
+negated).
+r2 := r1 + k1.
+r2 drukuj.
+Transcript show: 'k+r'; cr.
+k2 := k1 + r1.
+k2 drukuj. 

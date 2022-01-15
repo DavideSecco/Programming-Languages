@@ -1,0 +1,16 @@
+s := (Szesciokat new) initialize:4.
+s drukuj.
+k := (Kwadrat new) initialize: 2.
+k drukuj.
+Transcript show: 's+s'; cr.
+s1 := s obrot.
+s1 drukuj.
+s2 := s1 + s1 + s1 + s1
+s2 drukuj.
+Transcript show: 's+k'; cr.
+k1 := k obrot.
+s2 := s1 + k.
+s2 drukuj.
+Transcript show: 'k+s'; cr.
+k2 := k1 + s1.
+k2 drukuj.

@@ -1,0 +1,22 @@
+1. Objects have properties
+To examine the properties of a Smalltalk object, use the Inspector: Evaluate each of the following lines separately with Inspect it from the <operate> menu:
+
+3 @ 5										"Returns a Point object as indicated in the label at the top of the Inspector window. Its components are shown below."
+Rectangle origin: (3 @ 5) corner: (25@30)	"Returns a Rectangle object."
+3 / 5										"Returns a Fraction."
+
+If an object has properties they are, of course, again objects because everything is an object. As an example, the rectangle returned by the second line is a 
+composite object with components called origin and corner and these components are objects (points) with their own properties. To see their structure, select the
+line with the name and execute Dive in the <operate> menu of the list. To return to the previous Inspector level, execute Back in the <operate> menu or use the arrow
+button at the top of the Inspector. Play with the Inspector to discover its basic functionality and read the documentation or on-line help to learn more about it.
+
+2. Every object is an instance of a class
+Note that Smalltalk class names always begin with a capital letter.
+
+3. Use the Browser to view class definitions
+
+Smalltalk's tool for viewing, editing, creating, and destroying class definitions is called the Browser. VisualWorks provides several kinds of browsers and you can open 
+them from the Launcher: Browse -> System or clicking the button with a baloon and glasses opens the most common Refactoring Browser. You can also open a browser by sending 
+a message such as
+
+SmalltalkWorkbench browseClass: Fraction

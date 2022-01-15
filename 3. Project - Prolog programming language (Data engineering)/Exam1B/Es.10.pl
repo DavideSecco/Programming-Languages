@@ -1,0 +1,1 @@
+add_opr(X,Y,Res):- Res = X + Y; Res = X - Y; Res = X * Y; (Res = X / Y, B \= 0).

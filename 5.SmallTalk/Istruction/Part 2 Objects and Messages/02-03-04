@@ -1,0 +1,53 @@
+Smalltalk allows three kinds of messages: unary, binary, and keyword messages. The difference between them is 
+- in the structure of the name of the message (its selector) and 
+- the number of arguments that that the message expects.
+
+Unary messages consist of a single 'word' (properly called an identifier); they don't have any arguments. Evaluate the following three examples line-by-line with Print it.
+
+3 negated						"Receiver is 3, message selector is negated"
+27 squared						"Receiver is 27, selector is squared"
+'black fox' dropFinalVowels		"Receiver is 'black fox', selector is dropFinalVowels"
+
+By the way, don't puzzle about these and the following example messages - we will soon explain where they come from and how you can browse them.
+
+Binary messages use one or two special characters such as + - / \ @ , & | and @  for selector, and the selector is followed by one argument. Examples are
+
+3 + 5		"Receiver is 3, selector is +, argument is 'small integer' object 5. Note that all arithmetic operations are implemented by messages."
+'abc' , 'xyz'	"Receiver is 'abc', selector is , and argument is string object 'xyz'"
+17 // 5		"Receiver is 17, selector is //, argument is small integer 5"
+
+Keyword messages may have any number of arguments and each of them is preceded by an identifying keyword. The selector consists of one or more keywords (a keyword is an identifier followed by a colon), and each keyword is followed by argument. Read and evaluate the following examples:
+
+3 between: 5 and: 10	"Receiver is 3, message selector is between:and:, keywords are between: and and:, and arguments are 5 and 10"
+$d between: $a and:$r	"Receiver is character d, message selector is between:and: and arguments are characters a and r"
+3 raisedTo: 17			"Receiver 3, message selector is raisedTo: and argument is 17"
+Dialog request: 'Your name, please' initialAnswer: 'John'	"Receiver is 'class' object Dialog (more later), selector is request:initialAnswer:"
+'aLongWord' chopTo: 5	"Receiver is string 'aLongWord', selector is chopTo:"
+
+The message in the following expression is unusually long - it has six keywords. Its selector is choose:fromList:values:lines:cancel:for: I show it using multi-line formatting commonly used for keyword messages with multiple arguments but you can type it all on one line or in any other style because Smalltalk does not pay attention to 'white space'. Evaluate the expression by selecting all seven lines together and executing Print it
+
+Dialog 
+		choose: 'Which line do you want?' 
+		fromList: #('first' 'second' 'third' 'fourth') 
+		values: #(1 2 3 4) 
+		lines: 8 
+		cancel: [#noChoice]
+		for: Dialog defaultParentWindow
+
+Note that identifiers (names of unary messages and keywords) start with a lowercase letter and contain only letters and digits. They have unlimited length and are case sensitive, so that asUppercase and asUpperCase are different. To verify this, try evaluating the following message. It will fail  and Smalltalk will open a selection dialog because there is no message called asUpperCase. You can respond by clicking cancel to terminate execution and correct the code, or with correct it. In this case, VisualWorks will offer one or more similarly spelled selectors and if you select one, it will correct the mistake and continue evaluation. The correction mechanism usually succeeds when you make a small typing mistake but larger mistakes must be corrected by hand.
+
+'abc' asUpperCase
+
+In closing, the definitions of all of the messages listed above are available as a part of the environment and I will explain shortly how you can access them, modify them, and define your own messages.
+
+3. Every message returns an object and messages can thus be combined
+Example:
+5 factorial squared				"Integer 120 - the result of 5 factorial - is the receiver of message squared"
+'abc' asUppercase reverse		"The result of 'abc' asUppercase is the receiver of message reverse"
+13 factorial sqrt truncated even	"Interpretation: Calculate 13 factorial, then its square root, truncate the result an integer, and tell me whether it is even"
+
+4. Messages are executed from left to right; parenthesized expressions first, unary messages next, binary next, keyword last
+3 + 2 raisedTo: 2 squared + 7		"squared first (unary), + next (binary), raisedTo: last (keyword)"
+is equivalent to
+(3+2) raisedTo: ((2 squared) + 7)		"Parentheses first, unary messages next, binary then, keyword last."
+

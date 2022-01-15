@@ -1,0 +1,11 @@
+Transcript clear.
+s := (Szesciokat new) initialize: 6.
+s drukuj.
+s obrot.
+s drukuj.
+arr := Array new: 3.
+arr at: 1 put: s.
+arr at: 2 put: s.
+arr at: 3 put: s.
+s_ := s addArray: arr.
+s_ drukuj.

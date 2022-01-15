@@ -1,0 +1,144 @@
+<?xml version="1.0"?>
+
+<st-source>
+<time-stamp>From VisualWorks® Personal Use Edition, 8.3 of 28 lipca 2017 on 21 listopada 2019 at 19:41:46</time-stamp>
+
+
+<component-created>
+<name>Programming Languages</name> <type>package</type>
+</component-created><!-- Package Programming Languages* -->
+
+
+<component-property>
+<name>Programming Languages</name> <type>package</type>
+<property>comment</property> <value>'Programs for programming languages.'</value>
+</component-property>
+
+<class>
+<name>Wielokat</name>
+<environment>Smalltalk</environment>
+<super>Core.Object</super>
+<private>false</private>
+<indexed-type>none</indexed-type>
+<inst-vars>wierzcholki nazwa obroty </inst-vars>
+<class-inst-vars></class-inst-vars>
+<imports></imports>
+<category>JezykiProgramowania</category>
+<attributes>
+<package>Programming Languages</package>
+</attributes>
+</class>
+
+<comment>
+<class-id>Wielokat</class-id>
+<body>Wielokat is a class with contained all geometric figures. Addictionally the class rotates the figure and prints information about it.Instance Variables:	nazwa	&lt;MessageForwarder | Object | ProtoObject | ProtoObject&gt;	description of nazwa	wierzcholki	&lt;(Array of: (FlowSegment | Point))&gt;	description of wierzcholki</body>
+</comment>
+
+<class>
+<name>Szesciokat</name>
+<environment>Smalltalk</environment>
+<super>Wielokat</super>
+<private>false</private>
+<indexed-type>none</indexed-type>
+<inst-vars></inst-vars>
+<class-inst-vars></class-inst-vars>
+<imports></imports>
+<category></category>
+<attributes>
+<package>Programming Languages</package>
+</attributes>
+</class>
+
+<comment>
+<class-id>Szesciokat</class-id>
+<body>Szesciokat is a geometric figure.</body>
+</comment>
+
+<class>
+<name>Kwadrat</name>
+<environment>Smalltalk</environment>
+<super>Wielokat</super>
+<private>false</private>
+<indexed-type>none</indexed-type>
+<inst-vars></inst-vars>
+<class-inst-vars></class-inst-vars>
+<imports></imports>
+<category>JezykiProgramowania</category>
+<attributes>
+<package>Programming Languages</package>
+</attributes>
+</class>
+
+<comment>
+<class-id>Kwadrat</class-id>
+<body>Kwadrat is a geometric figure. </body>
+</comment>
+
+<methods>
+<class-id>Wielokat</class-id> <category>accessing</category>
+
+<body package="Programming Languages" selector="obrot">obrot	"obraca wielokat o 90 stopni wedlug pierwszego wierzcholka"		2 to: (wierzcholki capacity) do: [:i| 		wierzcholki at: i put: (0 - ((wierzcholki at: i) y))@((wierzcholki at: i ) x).	].	obroty:=obroty + 1.</body>
+
+<body package="Programming Languages" selector="drukuj">drukuj	"drukuje informacje o wielokacie"		Transcript show: nazwa printString.	Transcript show: ''; cr.  	Transcript show: self pole printString.	Transcript show: ''; cr.  	1 to: (wierzcholki capacity) do: [:i|  	Transcript show: ' Nr: '.	Transcript show: (i printString).	Transcript show: ' x: '.	Transcript show: (wierzcholki at: i) x printString.	Transcript show: ' y: '.	Transcript show: (wierzcholki at: i) y printString.	Transcript show: ''; cr.  	].</body>
+
+<body package="Programming Languages" selector="nazwa">nazwa	"podaje nazwe wielokata"	^nazwa</body>
+
+<body package="Programming Languages" selector="nazwa:">nazwa: nowa_nazwa	"ustawia nowa nazwe wielokata"	nazwa:=nowa_nazwa</body>
+</methods>
+
+<methods>
+<class-id>Wielokat</class-id> <category>initialize-release</category>
+
+<body package="Programming Languages" selector="initialize:name:">initialize: liczbaWierzcholkow name: nowaNazwa	"konstruktor obiektu - wielokata"	nazwa:=nowaNazwa.	wierzcholki:=Array new: liczbaWierzcholkow.	wierzcholki at: 1 put: 0@0.	obroty:=0.</body>
+</methods>
+
+
+<methods>
+<class-id>Szesciokat class</class-id> <category>instance creation</category>
+
+<body package="Programming Languages" selector="new">new	"Answer a newly created and initialized instance."	^super new initialize</body>
+</methods>
+
+
+<methods>
+<class-id>Szesciokat</class-id> <category>actions</category>
+
+<body package="Programming Languages" selector="pole">pole 	"liczy pole szesciokata"		| a b |	a := (wierzcholki at: 2) x.	b := (wierzcholki at: 2) y.		a&lt;b	ifTrue: [^b squared * 3 * 3 sqrt * 0.5] ifFalse: [^a squared * 3 * 3 sqrt * 0.5].</body>
+</methods>
+
+<methods>
+<class-id>Szesciokat</class-id> <category>arithmetic</category>
+
+<body package="Programming Languages" selector="+">+ figura	"dodaj 2 figury w sensie pola"	| p nowe |	p:=self pole + figura pole.	nowe:=(Szesciokat new) initialize: ( 2 * p / 3 / 3 sqrt ) sqrt.	1 to: obroty do: [:i|		nowe obrot		].	^nowe</body>
+</methods>
+
+<methods>
+<class-id>Szesciokat</class-id> <category>initialize-release</category>
+
+<body package="Programming Languages" selector="initialize:">initialize: bok	"tworz kwadrat o podanym boku"	super initialize: 6 name: 'Szesciokat'.	wierzcholki at: 2 put: bok@0.	wierzcholki at: 3 put: (bok * 1.5)@(bok * 3 sqrt * 0.5).	wierzcholki at: 4 put: bok@(bok * 3 sqrt).	wierzcholki at: 5 put: 0@(bok * 3 sqrt).	wierzcholki at: 6 put: (0 - (bok * 0.5))@(bok * 3 sqrt * 0.5).</body>
+
+<body package="Programming Languages" selector="initialize">initialize	"Initialize a newly created instance. This method must answer the receiver."	super initialize.	" *** Replace this comment with the appropriate initialization code *** "	^self</body>
+</methods>
+
+
+<methods>
+<class-id>Kwadrat</class-id> <category>actions</category>
+
+<body package="Programming Languages" selector="pole">pole 	"liczy pole kwadratu"		| a b |	a := (wierzcholki at: 2) x.	b := (wierzcholki at: 2) y.		a&lt;b	ifTrue: [^b squared] ifFalse: [^a squared].</body>
+</methods>
+
+<methods>
+<class-id>Kwadrat</class-id> <category>arithmetic</category>
+
+<body package="Programming Languages" selector="+">+ figura	"dodaj 2 figury w sensie pola"	| p nowe |	p:=self pole + figura pole.	nowe:=(Kwadrat new) initialize: p sqrt.	1 to: obroty do: [:i|		nowe obrot		].	^nowe</body>
+</methods>
+
+<methods>
+<class-id>Kwadrat</class-id> <category>initialize-release</category>
+
+<body package="Programming Languages" selector="initialize:">initialize: bok	"tworz kwadrat o podanym boku"	super initialize: 4 name: 'Kwadrat'.	wierzcholki at: 2 put: bok@0.	wierzcholki at: 3 put: bok@bok.	wierzcholki at: 4 put: 0@bok.</body>
+</methods>
+
+
+
+</st-source>
