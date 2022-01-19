@@ -1,0 +1,9 @@
+addArray: array
+	| temp_obiekt |
+
+	temp_obiekt := self.
+
+	array do: [:i|
+		temp_obiekt:=(temp_obiekt + i)].
+
+^temp_obiekt.

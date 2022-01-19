@@ -1,0 +1,23 @@
+Transcript clear.
+s := (Romb new) initialize: 4.
+s drukuj.
+s := s przesun: 2@3.
+s drukuj.
+b:= Bag new: 3.
+b add: s.
+b add: s.
+b add: s.
+s2 := s addBag: b.
+s2 drukuj.
+
+
+k := (Kwadrat new) initialize: 4.
+k drukuj.
+k := k przesun: 2@3.
+k drukuj.
+b2:= Bag new: 3.
+b2 add: k.
+b2 add: k.
+b2 add: k.
+k2 := k addBag: b2.
+k2 drukuj.
